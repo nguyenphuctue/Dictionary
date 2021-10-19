@@ -1,0 +1,15 @@
+Word{id=1, wordTarget='extreme', wordExplain='vô cùng', pronounce='[ikˈstriːm]', wordType='Tính từ'}
+Word{id=2, wordTarget='become', wordExplain='trở nên', pronounce='[bi’kʌm]', wordType='Động từ'}
+Word{id=3, wordTarget='choose', wordExplain='lựa chọn', pronounce='[t∫u:z]', wordType='Động từ'}
+Word{id=4, wordTarget='begin', wordExplain='bắt đầu', pronounce='[bi’gin]', wordType='Động từ'}
+Word{id=5, wordTarget='catch', wordExplain='bắt, chụp', pronounce='[kæt∫]', wordType='Động từ'}
+Word{id=6, wordTarget='dream', wordExplain='mơ thấy', pronounce='[dri:m]', wordType='Động từ'}
+Word{id=7, wordTarget='go', wordExplain='đi', pronounce='[gou]', wordType='Động từ'}
+Word{id=8, wordTarget='leave', wordExplain='rời đi', pronounce='[li:v]', wordType='Động từ'}
+Word{id=9, wordTarget='overcome', wordExplain='khắc phục', pronounce='[,ouvə’kʌm]', wordType='Động từ'}
+Word{id=10, wordTarget='Apple  ', wordExplain='táo', pronounce='/’æpl/', wordType='Danh từ'}
+Word{id=11, wordTarget='Avocado ', wordExplain='trái bơ', pronounce='/¸ævə´ka:dou/', wordType='Danh từ'}
+Word{id=12, wordTarget='Coconut', wordExplain='dừa', pronounce='/’koukənʌt/', wordType='Danh từ'}
+Word{id=13, wordTarget='Mango ', wordExplain='xoài', pronounce='/´mæηgou/', wordType='Danh từ'}
+Word{id=14, wordTarget='government', wordExplain='chinh phu', pronounce='/ˈgʌvnmənt /', wordType='Danh từ'}
+Word{id=15, wordTarget='Mandarin ', wordExplain='/’mændərin/', pronounce='/’mændərin/', wordType='Danh từ'}

@@ -1,9 +1,5 @@
 package uet.dictionary.main;
 
-import com.sun.speech.freetts.Voice;
-import com.sun.speech.freetts.VoiceManager;
-import com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory;
-
 import uet.dictionary.model.Word;
 import uet.dictionary.repository.DictionaryRepository;
 import uet.dictionary.repository.DictionaryRepositoryImpl;
@@ -39,7 +35,7 @@ public class DictionaryManagement {
                 } else {
                     System.out.println("No" + "\t" + "|English" + "\t\t" + "|Vietnamese");
                     for (Word word : words) {
-                        System.out.println(word.getId() + "\t" + "|" + word.getWord_target() + "\t\t" + "|" + word.getWord_explain());
+                        System.out.println(word.getId() + "\t" + "|" + word.getWordTarget() + "\t\t" + "|" + word.getWordExplain());
                     }
                 }
                 break;
@@ -48,7 +44,7 @@ public class DictionaryManagement {
                 List<Word> listWords = dictionaryRepository.getAllWords();
                 System.out.println("No" + "\t" + "|English" + "\t\t" + "|Vietnamese");
                 for (Word word : listWords) {
-                    System.out.println(word.getId() + "\t" + "|" + word.getWord_target() + "\t\t\t" + "|" + word.getWord_explain());
+                    System.out.println(word.getId() + "\t" + "|" + word.getWordTarget() + "\t\t\t" + "|" + word.getWordExplain());
                 }
                 break;
 
@@ -57,8 +53,12 @@ public class DictionaryManagement {
                 String english = scan.nextLine();
                 System.out.print("Nhap giai thich sang tieng Viet: ");
                 String vietnamese = scan.nextLine();
+                System.out.print("Nhap phat am: ");
+                String pronunce = scan.nextLine();
+                System.out.print("Nhap loai tu: ");
+                String wordType = scan.nextLine();
 
-                int count = dictionaryRepository.insertWord(english, vietnamese);
+                int count = dictionaryRepository.insertWord(english, vietnamese, pronunce, wordType);
                 System.out.println(count);
                 break;
 

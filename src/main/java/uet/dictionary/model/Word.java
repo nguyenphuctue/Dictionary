@@ -6,68 +6,70 @@ public class Word {
      * Attribute.
      */
     private int id;
-    private String word_target;
-    private String word_explain;
+    private String wordTarget;
+    private String wordExplain;
+    private String pronounce;
+    private String wordType;
 
-    /**
-     *
-     * @param id
-     * @param word_target
-     * @param word_explain
-     */
-    public Word(int id, String word_target, String word_explain) {
+    public Word(int id, String wordTarget, String wordExplain, String pronounce, String wordType) {
         this.id = id;
-        this.word_target = word_target;
-        this.word_explain = word_explain;
+        this.wordTarget = wordTarget;
+        this.wordExplain = wordExplain;
+        this.pronounce = pronounce;
+        this.wordType = wordType;
     }
 
-    /**
-     * Constructor.
-     */
     public Word() {
-
     }
 
-    /**
-     * Method getter.
-     */
     public int getId() {
         return id;
     }
 
-    public String getWord_target() {
-        return word_target;
-    }
-
-    public String getWord_explain() {
-        return word_explain;
-    }
-
-    /**
-     * Method setter.
-     */
     public void setId(int id) {
         this.id = id;
     }
 
-    public void setWord_target(String word_target) {
-        this.word_target = word_target;
+    public String getWordTarget() {
+        return wordTarget;
     }
 
-    public void setWord_explain(String word_explain) {
-        this.word_explain = word_explain;
+    public void setWordTarget(String wordTarget) {
+        this.wordTarget = wordTarget;
     }
 
-    /**
-     * Method toString.
-     */
+    public String getWordExplain() {
+        return wordExplain;
+    }
+
+    public void setWordExplain(String wordExplain) {
+        this.wordExplain = wordExplain;
+    }
+
+    public String getPronounce() {
+        return pronounce;
+    }
+
+    public void setPronounce(String pronounce) {
+        this.pronounce = pronounce;
+    }
+
+    public String getWordType() {
+        return wordType;
+    }
+
+    public void setWordType(String wordType) {
+        this.wordType = wordType;
+    }
+
     @Override
     public String toString() {
         return "Word{" +
                 "id=" + id +
-                ", word_target='" + word_target + '\'' +
-                ", word_explain='" + word_explain + '\'' +
+                ", wordTarget='" + wordTarget + '\'' +
+                ", wordExplain='" + wordExplain + '\'' +
+                ", pronounce='" + pronounce + '\'' +
+                ", wordType='" + wordType + '\'' +
                 '}';
     }
-
 }

@@ -11,6 +11,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DictionaryRepositoryImpl implements DictionaryRepository {
+
+    /**
+     * Logic: Lấy danh sách các từ trong database
+     */
     @Override
     public List<Word> getAllWords() {
         List<Word> words = new ArrayList<>();
@@ -23,8 +27,10 @@ public class DictionaryRepositoryImpl implements DictionaryRepository {
             while (rs.next()) {
                 Word word = new Word();
                 word.setId(rs.getInt(1));
-                word.setWord_target(rs.getString(2));
-                word.setWord_explain(rs.getString(3));
+                word.setWordTarget(rs.getString(2));
+                word.setWordExplain(rs.getString(3));
+                word.setPronounce(rs.getString(4));
+                word.setWordType(rs.getString(5));
                 words.add(word);
             }
         } catch (SQLException e) {
@@ -34,21 +40,27 @@ public class DictionaryRepositoryImpl implements DictionaryRepository {
         return words;
     }
 
+    /**
+     * Logic: Tìm kiếm từ bằng tiếng anh
+     */
     @Override
-    public Word getWordByEnglish(String word_target) {
+    public Word getWordByEnglish(String wordTarget) {
         Word word = new Word();
-        String query = "SELECT * FROM word WHERE word_target = ?";
+        String query = "SELECT * FROM word WHERE wordTarget = ?";
 
         try (Connection connection = MYSQLConnection.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
-            preparedStatement.setString(1, word_target);
+            preparedStatement.setString(1, wordTarget);
 
             ResultSet rs = preparedStatement.executeQuery();
-            rs.next();
-            word.setId(rs.getInt(1));
-            word.setWord_target(rs.getString(2));
-            word.setWord_explain(rs.getString(3));
+            if(rs.next()){
+                word.setId(rs.getInt(1));
+                word.setWordTarget(rs.getString(2));
+                word.setWordExplain(rs.getString(3));
+                word.setPronounce(rs.getString(4));
+                word.setWordType(rs.getString(5));
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -56,22 +68,27 @@ public class DictionaryRepositoryImpl implements DictionaryRepository {
         return word;
     }
 
+    /**
+     * Logic: Tìm kiếm danh sách các từ bằng tiếng anh
+     */
     @Override
-    public List<Word> getListWordByEnglish(String word_target) {
+    public List<Word> getListWordByEnglish(String wordTarget) {
         List<Word> words = new ArrayList<>();
-        String query = "SELECT * FROM word WHERE word_target LIKE ?";
+        String query = "SELECT * FROM word WHERE wordTarget LIKE ?";
 
         try (Connection connection = MYSQLConnection.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
-            preparedStatement.setString(1, word_target + "%");
+            preparedStatement.setString(1, wordTarget + "%");
 
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
                 Word word = new Word();
                 word.setId(rs.getInt(1));
-                word.setWord_target(rs.getString(2));
-                word.setWord_explain(rs.getString(3));
+                word.setWordTarget(rs.getString(2));
+                word.setWordExplain(rs.getString(3));
+                word.setPronounce(rs.getString(4));
+                word.setWordType(rs.getString(5));
                 words.add(word);
             }
         } catch (SQLException e) {
@@ -81,16 +98,21 @@ public class DictionaryRepositoryImpl implements DictionaryRepository {
         return words;
     }
 
+    /**
+     * Logic: Thêm từ vào từ điển
+     */
     @Override
-    public int insertWord(String word_target, String word_explain) {
+    public int insertWord(String wordTarget, String wordExplain, String pronounce, String wordType) {
         int row = 0;
-        String query = "INSERT INTO word(word_target, word_explain) VALUE(?, ?)";
+        String query = "INSERT INTO word(wordTarget, wordExplain, pronounce, wordType) VALUE(?, ?, ?, ?)";
 
         try (Connection connection = MYSQLConnection.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
-            preparedStatement.setString(1, word_target);
-            preparedStatement.setString(2, word_explain);
+            preparedStatement.setString(1, wordTarget);
+            preparedStatement.setString(2, wordExplain);
+            preparedStatement.setString(3, pronounce);
+            preparedStatement.setString(4, wordType);
 
             row = preparedStatement.executeUpdate();
 
@@ -101,6 +123,54 @@ public class DictionaryRepositoryImpl implements DictionaryRepository {
         return row;
     }
 
+    /**
+     * Logic: Sửa từ trong từ điển
+     */
+    @Override
+    public int updateWord(String wordTarget, String wordExplain, String pronounce, String wordType) {
+        int row = 0;
+        String query = "UPDATE word SET wordExplain = ? , pronounce = ? , wordType = ? WHERE wordTarget = ?";
+
+        try (Connection connection = MYSQLConnection.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            preparedStatement.setString(1, wordExplain);
+            preparedStatement.setString(2, pronounce);
+            preparedStatement.setString(3, wordType);
+            preparedStatement.setString(4, wordTarget);
+
+            row = preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return row;
+    }
+
+    /**
+     * Logic: Xóa từ trong từ điển
+     */
+    @Override
+    public int deleteWord(int id) {
+        int row = 0;
+        String query = "DELETE FROM word WHERE id = ?";
+        try (Connection connection = MYSQLConnection.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            preparedStatement.setInt(1, id);
+            row = preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return row;
+    }
+
+    /**
+     * Logic: Xuất dữ liệu ra file dictionary.txt
+     */
     @Override
     public void exportToFile(List<Word> words) {
         try {

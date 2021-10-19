@@ -6,9 +6,17 @@ import java.util.List;
 
 public interface DictionaryRepository {
     List<Word> getAllWords();
-    List<Word> getListWordByEnglish(String word_target);
-    Word getWordByEnglish(String word_target);
-    int insertWord(String word_target, String word_explain);
+
+    List<Word> getListWordByEnglish(String wordTarget);
+
+    Word getWordByEnglish(String wordTarget);
+
+    int insertWord(String wordTarget, String wordExplain, String pronounce, String wordType);
+
+    int updateWord(String wordTarget, String wordExplain, String pronounce, String wordType);
+
+    int deleteWord(int id);
+
     void exportToFile(List<Word> words);
 }
 

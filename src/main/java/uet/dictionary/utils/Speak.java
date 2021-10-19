@@ -14,6 +14,7 @@ public class Speak {
             voice.setRate(135);//Setting the rate of the voice
             voice.setPitch(160);//Setting the Pitch of the voice
             boolean status = voice.speak(english);
+            System.out.println(status);
             voice.deallocate();
         } else {
             System.out.println("Error");

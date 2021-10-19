@@ -12,21 +12,9 @@ public class Translator {
     private static final String ENDPOINT = "http://api.whatsmate.net/v1/translation/translate";
 
     /**
-     * Entry Point
-     */
-    public static void main(String[] args) throws Exception {
-        // TODO: Specify your translation requirements here:
-        String fromLang = "en";
-        String toLang = "vi";
-        String text = "Let's have some fun!";
-
-        Translator.translate(fromLang, toLang, text);
-    }
-
-    /**
      * Sends out a WhatsApp message via WhatsMate WA Gateway.
      */
-    public static void translate(String fromLang, String toLang, String text) throws Exception {
+    public static String translate(String fromLang, String toLang, String text) throws Exception {
         // TODO: Should have used a 3rd party library to make a JSON string from an object
         String jsonPayload = new StringBuilder()
                 .append("{")
@@ -63,11 +51,11 @@ public class Translator {
         String output;
         while ((output = br.readLine()) != null) {
             System.out.println(output);
-//            return output;
+            return output;
         }
         conn.disconnect();
 
-//        return null;
+        return null;
     }
 
 }

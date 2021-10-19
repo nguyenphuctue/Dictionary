@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uet.dictionary.AddWord">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uet.dictionary.controllers.AddWordController">
    <children>
-      <Label layoutX="59.0" layoutY="65.0" prefHeight="17.0" prefWidth="86.0" text="Từ tiếng anh:" />
-      <Label layoutX="59.0" layoutY="145.0" prefHeight="17.0" prefWidth="86.0" text="Phát âm" />
-      <Label layoutX="59.0" layoutY="212.0" prefHeight="17.0" prefWidth="86.0" text="Giải thích" />
-      <Label layoutX="59.0" layoutY="287.0" prefHeight="17.0" prefWidth="86.0" text="Loại từ" />
-      <ComboBox layoutX="196.0" layoutY="282.0" prefWidth="150.0" promptText="Lựa chọn" />
-      <TextField layoutX="196.0" layoutY="61.0" prefHeight="26.0" prefWidth="310.0" />
-      <TextField layoutX="196.0" layoutY="141.0" prefHeight="26.0" prefWidth="310.0" />
-      <TextField layoutX="196.0" layoutY="208.0" prefHeight="26.0" prefWidth="310.0" />
+      <Label layoutX="59.0" layoutY="87.0" prefHeight="17.0" prefWidth="126.0" text="Từ tiếng anh (obtain):" />
+      <Label layoutX="59.0" layoutY="141.0" prefHeight="17.0" prefWidth="126.0" text="Phát âm (/əbˈtein/):" />
+      <Label layoutX="59.0" layoutY="192.0" prefHeight="17.0" prefWidth="126.0" text="Giải thích (đạt được):" />
+      <Label layoutX="59.0" layoutY="238.0" prefHeight="17.0" prefWidth="86.0" text="Loại từ" />
+      <ComboBox fx:id="wordType" layoutX="196.0" layoutY="234.0" prefHeight="25.0" prefWidth="310.0" promptText="Lựa chọn" />
+      <TextField fx:id="wordTarget" layoutX="196.0" layoutY="83.0" prefHeight="26.0" prefWidth="310.0" />
+      <TextField fx:id="pronounce" layoutX="196.0" layoutY="137.0" prefHeight="26.0" prefWidth="310.0" />
+      <TextField fx:id="wordExplain" layoutX="196.0" layoutY="187.0" prefHeight="26.0" prefWidth="310.0" />
+      <Button layoutX="59.0" layoutY="27.0" mnemonicParsing="false" onAction="#back" text="Quay lại" />
+      <Button layoutX="420.0" layoutY="315.0" mnemonicParsing="false" onAction="#add" prefHeight="25.0" prefWidth="86.0" text="+ Thêm từ" />
    </children>
 </AnchorPane>

@@ -1,4 +1,4 @@
-module uet.dictionary {
+open module uet.dictionary {
     requires javafx.controls;
     requires javafx.fxml;
 
@@ -6,8 +6,9 @@ module uet.dictionary {
     requires java.sql;
     requires freetts;
 
-    opens uet.dictionary to javafx.fxml;
+//    opens uet.dictionary to javafx.fxml, javafx.base;
+//    opens uet.dictionary.controllers to javafx.fxml;
+
     exports uet.dictionary;
-    exports uet.dictionary.controller;
-    opens uet.dictionary.controller to javafx.fxml;
+    exports uet.dictionary.controllers;
 }
